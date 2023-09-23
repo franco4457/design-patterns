@@ -1,4 +1,4 @@
-import { type Product } from '..'
+import { type IClient, type Product } from '..'
 
 interface Transport {
   name: string
@@ -65,7 +65,7 @@ class LogistcTrasnport implements TransportFactory {
     }
   }
 }
-export class Client {
+export class Client implements IClient {
   constructor(private readonly product: Product, private readonly transportby?: string) {}
   run(): string {
     const transport = new LogistcTrasnport(this.product, this.transportby)

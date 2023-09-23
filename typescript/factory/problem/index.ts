@@ -1,4 +1,4 @@
-import { type Product } from '..'
+import { type IClient, type Product } from '..'
 
 export class Transport {
   private readonly truckOperateCost = 2
@@ -29,7 +29,7 @@ export class Transport {
     return `${this.product.name} will be delivered by ship and cost ${this.calculateCostByShip()}`
   }
 }
-export class LogistcTrasnport {
+export class Client implements IClient {
   constructor(private readonly product: Product, private readonly transportby?: string) {}
   run(): string {
     let deliver
