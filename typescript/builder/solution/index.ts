@@ -132,47 +132,55 @@ export class ManualBuilder implements Builder {
 }
 
 export class Director {
-  createTesla(builder: Builder) {
-    builder
-      .setColor('red')
-      .setEngine('electric')
-      .setExtra(['airbag', 'aircondition'])
-      .setGPS(true)
-      .setAutoPilot(true)
-      .setSeats(4)
-      .setDoors(4)
+  createTesla(...builders: Builder[]) {
+    builders.forEach((builder) => {
+      builder
+        .setColor('red')
+        .setEngine('electric')
+        .setExtra(['airbag', 'aircondition'])
+        .setGPS(true)
+        .setAutoPilot(true)
+        .setSeats(4)
+        .setDoors(4)
+    })
   }
 
-  createSUV(builder: Builder) {
-    builder
-      .setColor('black')
-      .setDoors(4)
-      .setEngine('diesel')
-      .setExtra(['airbag'])
-      .setGPS(true)
-      .setAutoPilot(false)
-      .setSeats(4)
+  createSUV(...builders: Builder[]) {
+    builders.forEach((builder) => {
+      builder
+        .setColor('black')
+        .setDoors(4)
+        .setEngine('diesel')
+        .setExtra(['airbag'])
+        .setGPS(true)
+        .setAutoPilot(false)
+        .setSeats(4)
+    })
   }
 
-  createTruck(builder: Builder) {
-    builder
-      .setColor('white')
-      .setEngine('diesel')
-      .setExtra(['triler', 'airacondition', 'airbag'])
-      .setGPS(true)
-      .setAutoPilot(false)
-      .setSeats(2)
-      .setDoors(2)
+  createTruck(...builders: Builder[]) {
+    builders.forEach((builder) => {
+      builder
+        .setColor('white')
+        .setEngine('diesel')
+        .setExtra(['triler', 'airacondition', 'airbag'])
+        .setGPS(true)
+        .setAutoPilot(false)
+        .setSeats(2)
+        .setDoors(2)
+    })
   }
 
-  createRacing(builder: Builder) {
-    builder
-      .setColor('blue')
-      .setEngine('gasoline')
-      .setExtra(['roll cage', 'aileron'])
-      .setGPS(false)
-      .setAutoPilot(false)
-      .setSeats(1)
-      .setDoors(0)
+  createRacing(...builders: Builder[]) {
+    builders.forEach((builder) => {
+      builder
+        .setColor('blue')
+        .setEngine('gasoline')
+        .setExtra(['roll cage', 'aileron'])
+        .setGPS(false)
+        .setAutoPilot(false)
+        .setSeats(1)
+        .setDoors(0)
+    })
   }
 }
