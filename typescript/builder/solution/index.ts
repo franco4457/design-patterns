@@ -1,14 +1,14 @@
 import type { ICar, IManual } from 'builder'
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 interface Builder {
-  reset: () => void
-  setEngine: (engine: string) => void
-  setDoors: (doors: number) => void
-  setSeats: (seats: number) => void
-  setColor: (color: string) => void
-  setGPS: (hasGPS: boolean) => void
-  setAutoPilot: (hasAutoPilot: boolean) => void
-  setExtra: (extra: string[]) => void
+  reset: () => Builder
+  setEngine: (engine: string) => Builder
+  setDoors: (doors: number) => Builder
+  setSeats: (seats: number) => Builder
+  setColor: (color: string) => Builder
+  setGPS: (hasGPS: boolean) => Builder
+  setAutoPilot: (hasAutoPilot: boolean) => Builder
+  setExtra: (extra: string[]) => Builder
 }
 
 class Manual implements IManual {
@@ -36,36 +36,44 @@ export class CarBuilder implements Builder {
     this.reset()
   }
 
-  reset(): void {
+  reset() {
     this.car = new Car()
+    return this
   }
 
-  setDoors(doors: number): void {
+  setDoors(doors: number) {
     this.car.doors = doors
+    return this
   }
 
-  setEngine(engine: string): void {
+  setEngine(engine: string) {
     this.car.engine = engine
+    return this
   }
 
-  setSeats(seats: number): void {
+  setSeats(seats: number) {
     this.car.seats = seats
+    return this
   }
 
-  setColor(color: string): void {
+  setColor(color: string) {
     this.car.color = color
+    return this
   }
 
-  setGPS(hasGPS: boolean): void {
+  setGPS(hasGPS: boolean) {
     this.car.hasGPS = hasGPS
+    return this
   }
 
-  setAutoPilot(hasAutoPilot: boolean): void {
+  setAutoPilot(hasAutoPilot: boolean) {
     this.car.hasAutoPilot = hasAutoPilot
+    return this
   }
 
-  setExtra(extra: string[]): void {
+  setExtra(extra: string[]) {
     this.car.extra = extra
+    return this
   }
 
   getResult(): ICar {
@@ -80,34 +88,42 @@ export class ManualBuilder implements Builder {
 
   setEngine(engine: string) {
     this.manual.engine = capitalize(engine)
+    return this
   }
 
   setAutoPilot(hasAutoPilot: boolean) {
     this.manual.hasAutoPilot = hasAutoPilot ? 'Yes' : 'No'
+    return this
   }
 
   setColor(color: string) {
     this.manual.color = color
+    return this
   }
 
   setDoors(doors: number) {
     this.manual.doors = doors === 0 ? "Don't have" : doors.toString()
+    return this
   }
 
   setGPS(hasGPS: boolean) {
     this.manual.hasGPS = hasGPS ? 'Yes' : 'No'
+    return this
   }
 
   setSeats(seats: number) {
     this.manual.seats = seats.toString()
+    return this
   }
 
   setExtra(extra: string[]) {
     this.manual.extra = extra.map((e) => `has ${e}`)
+    return this
   }
 
   reset() {
     this.manual = new Manual()
+    return this
   }
 
   getResult(): IManual {
@@ -117,42 +133,46 @@ export class ManualBuilder implements Builder {
 
 export class Director {
   createTesla(builder: Builder) {
-    builder.setColor('red')
-    builder.setEngine('electric')
-    builder.setExtra(['airbag', 'aircondition'])
-    builder.setGPS(true)
-    builder.setAutoPilot(true)
-    builder.setSeats(4)
-    builder.setDoors(4)
+    builder
+      .setColor('red')
+      .setEngine('electric')
+      .setExtra(['airbag', 'aircondition'])
+      .setGPS(true)
+      .setAutoPilot(true)
+      .setSeats(4)
+      .setDoors(4)
   }
 
   createSUV(builder: Builder) {
-    builder.setColor('black')
-    builder.setDoors(4)
-    builder.setEngine('diesel')
-    builder.setExtra(['airbag'])
-    builder.setGPS(true)
-    builder.setAutoPilot(false)
-    builder.setSeats(4)
+    builder
+      .setColor('black')
+      .setDoors(4)
+      .setEngine('diesel')
+      .setExtra(['airbag'])
+      .setGPS(true)
+      .setAutoPilot(false)
+      .setSeats(4)
   }
 
   createTruck(builder: Builder) {
-    builder.setColor('white')
-    builder.setEngine('diesel')
-    builder.setExtra(['triler', 'airacondition', 'airbag'])
-    builder.setGPS(true)
-    builder.setAutoPilot(false)
-    builder.setSeats(2)
-    builder.setDoors(2)
+    builder
+      .setColor('white')
+      .setEngine('diesel')
+      .setExtra(['triler', 'airacondition', 'airbag'])
+      .setGPS(true)
+      .setAutoPilot(false)
+      .setSeats(2)
+      .setDoors(2)
   }
 
   createRacing(builder: Builder) {
-    builder.setColor('blue')
-    builder.setEngine('gasoline')
-    builder.setExtra(['roll cage', 'aileron'])
-    builder.setGPS(false)
-    builder.setAutoPilot(false)
-    builder.setSeats(1)
-    builder.setDoors(0)
+    builder
+      .setColor('blue')
+      .setEngine('gasoline')
+      .setExtra(['roll cage', 'aileron'])
+      .setGPS(false)
+      .setAutoPilot(false)
+      .setSeats(1)
+      .setDoors(0)
   }
 }
