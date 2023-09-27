@@ -31,8 +31,8 @@ export const testTesla = {
   manual: {
     color: 'red',
     doors: '4',
-    engine: 'Electrical',
-    extra: ['has 4 airbag', 'has aircondition'],
+    engine: 'Electric',
+    extra: ['has airbag', 'has aircondition'],
     hasAutoPilot: 'Yes',
     hasGPS: 'Yes',
     seats: '4'
@@ -52,7 +52,7 @@ export const testSUV = {
     color: 'black',
     doors: '4',
     engine: 'Diesel',
-    extra: ['has 2 airbag'],
+    extra: ['has airbag'],
     hasAutoPilot: 'No',
     hasGPS: 'Yes',
     seats: '4'
@@ -75,7 +75,7 @@ export const testTruck = {
     hasGPS: 'Yes',
     hasAutoPilot: 'No',
     seats: '2',
-    extra: ['has space to 3 trilers', 'has airacondition', 'has 1 airbag']
+    extra: ['has triler', 'has airacondition', 'has airbag']
   }
 }
 export const testRacing = {
@@ -89,7 +89,7 @@ export const testRacing = {
     extra: ['roll cage', 'aileron']
   },
   manual: {
-    engine: 'Gasoline v12',
+    engine: 'Gasoline',
     doors: "Don't have",
     color: 'blue',
     hasGPS: 'No',
@@ -100,7 +100,7 @@ export const testRacing = {
 }
 export const testCustom = {
   car: {
-    engine: 'gasoline',
+    engine: 'gasoline v8',
     doors: 2,
     color: 'yellow',
     hasGPS: true,
@@ -115,6 +115,6 @@ export const testCustom = {
     hasGPS: 'Yes',
     hasAutoPilot: 'Yes',
     seats: '2',
-    extra: ['has 2 airbag', 'has aircondition', 'has aileron', 'has polarized glasses']
+    extra: ['has airbag', 'has aircondition', 'has aileron', 'has polarized glasses']
   }
 }
