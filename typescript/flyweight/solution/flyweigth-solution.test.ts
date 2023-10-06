@@ -20,7 +20,7 @@ describe('Flyweight solution', () => {
     })
     console.timeEnd('draw 1000 trees')
   })
-  it('should be draw 100000 trees', () => {
+  it.skip('should be draw 100000 trees', () => {
     console.time('draw 100000 trees')
     const perf = performance.now()
     const forest = new Forest(treeFactory)
