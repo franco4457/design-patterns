@@ -43,6 +43,14 @@ export class Editor {
   createSnapshot(): Snapshot {
     return new this.EditorSnapshot(this, this.text, this.curX, this.curY)
   }
+
+  getState() {
+    return {
+      text: this.text,
+      curX: this.curX,
+      curY: this.curY
+    }
+  }
 }
 
 export class Historial {
