@@ -2,13 +2,13 @@ import { Forest, TreeFactory } from '.'
 const treeFactory = new TreeFactory([{ name: 'pine', color: 'green', texture: 'image1' }])
 
 describe('Flyweight solution', () => {
-  it('draw tree', () => {
+  it.concurrent('draw tree', () => {
     const forest = new Forest(treeFactory)
     forest.plantTree(1, 2, 'pine', 'green', 'image1')
     const tree = forest.draw()[0]
     expect(tree).toContain('pine-green-🌲 at (1, 2).')
   })
-  it('should be draw 1000 trees', () => {
+  it.concurrent('should be draw 1000 trees', () => {
     console.time('draw 1000 trees')
     const forest = new Forest(treeFactory)
     for (let i = 0; i < 1000; i++) {
@@ -20,7 +20,7 @@ describe('Flyweight solution', () => {
     })
     console.timeEnd('draw 1000 trees')
   })
-  it.skip('should be draw 100000 trees', () => {
+  it.concurrent('should be draw 100000 trees', () => {
     console.time('draw 100000 trees')
     const perf = performance.now()
     const forest = new Forest(treeFactory)
